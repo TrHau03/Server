@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <title>New User</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+
+</head>
+
+<body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
+            <h2>Add New User</h2>
+        </div>
+
+        <form class="row g-3 col-lg-8" method="post" action="/cpanel/product/{{product._id}}/edit" enctype="multipart/form-data">
+            <div class="col-md-6">
+                <label class="form-label" for="first_name">Name</label>
+                <input type="text" value="{{product.name}}" class="form-control" name="name"  placeholder="Name">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="last_name">Price</label>
+                <input type="number" value="{{product.price}}" class="form-control" name="price"  placeholder="Price">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="email">Quantity</label>
+                <input type="number" value="{{product.quantity}}" class="form-control" name="quantity"  placeholder="Number">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="phone">Image</label>
+                <input type="file"  name="image" class="form-control" placeholder="Choose file">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Category:</label>
+                <select name="category" class="form-control">
+                    {{#each category}}
+                    {{#if this.selected}}
+                    <option selected value="{{this._id}}">{{this.name}}</option>
+                    {{else}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                    {{/if}}
+                    {{/each}}
+                </select>
+            </div>
+
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-left mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </div>
+        </form>
+    </main>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="/javascripts/bootstrap.bundle.min.js"></script>
+    <script src="/javascripts/feather.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+</body>
+
+</html>
