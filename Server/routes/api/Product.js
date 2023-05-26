@@ -34,7 +34,7 @@ var router = express.Router();
     }
  });
 
- router.post('/upload-image',[upload.single('iamge')], async(req, res, next) => {
+ router.post('/upload-image',[upload.single('image')], async(req, res, next) => {
     try {
         let {file} = req;
         if(file){
@@ -43,6 +43,22 @@ var router = express.Router();
           files.forEach(file =>{
             link.push(`http://localhost:3000/images/${files.filename}`);
           })*/ 
+          return res.status(200).json({result: true, link: link});
+
+        }
+    } catch (error) {
+        console.log("Uploading image failed:", error);
+        return res.status(500).json({result: false});
+    }
+});
+router.post('/upload-images',[upload.array('images', 10)], async(req, res, next) => {
+    try {
+        let {files} = req;
+        if(files && files.length > 0)    {
+          let link = [];
+          files.forEach(files =>{
+            link.push(`http://localhost:3000/images/${files.filename}`);
+          })
           return res.status(200).json({result: true, link: link});
 
         }

@@ -44,7 +44,7 @@ router.post("/login", async (req, res, next) => {
     if (result) {
       //tạo token
       const token = jwt.sign({ id: 1, name: "abc" }, "secret", {
-        expiresIn: 1*60 * 60
+        expiresIn: 1 * 60 * 60
       });
       console.log("token: " + token);
       //lưu vào session
@@ -62,7 +62,7 @@ router.post("/login", async (req, res, next) => {
 router.get("/logout", [checkTokenWeb], async (req, res, next) => {
   try {
     req.session.destroy();
-   return res.render("../views/users/login.hbs");
+    return res.render("../views/users/login.hbs");
   } catch (error) {
     console.log(error);
     return next(error);
@@ -76,19 +76,7 @@ router.get("/register", function (req, res, next) {
 // check email,pass từ form
 // thành công => trang chủ
 // thất bại => login
-router.post("/register", async (req, res, next) => {
-  try {
-    const { email, password, name } = req.body;
-    const result = await userController.register(email, password, name);
-    if (result) {
-      res.redirect("/login");
-    } else {
-      res.redirect("/register");
-    }
-  } catch (error) {
-    return res.redirect("/register");
-  }
-});
+
 router.get("/", [checkTokenWeb], function (req, res, next) {
   res.render("index");
 });

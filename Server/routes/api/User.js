@@ -12,7 +12,7 @@ router.post('/register', [checkRegister],async(req, res, next) => {
     try {
         const {email,name, password } = req.body;
         console.log(email,name,password);
-        const user = await userController.register(email,name, password);
+        const user = await userController.registerApp(email,name, password);
         if(user){
             return res.status(200).json({result:true, user});
         }
@@ -26,7 +26,7 @@ router.post('/login', async(req, res, next) => {
     try {
         const {email, password} = req.body;
         console.log(email, password);
-        const user = await userController.login(email, password);
+        const user = await userController.loginApp(email, password);
         if(user){
             const token = jwt.sign({_id: user._id }, "secret", {
                 expiresIn: 1*60 * 60

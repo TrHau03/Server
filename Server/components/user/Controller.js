@@ -1,19 +1,48 @@
 const userService = require('./Service');
-
-const login  = async(email, password) =>{
+const getAllUser = async () => {
+    try {
+        return await userService.getAllUser();
+    } catch (error) {
+        console.log(error);
+    }
+}
+const deleteUsersByID = async (id) => {
+    try {
+        return await userService.deleteUsersByID(id)
+    } catch (error) {
+        console.log(error);
+    }
+}
+const login = async (email, password) => {
     try {
         return await userService.login(email, password);
     } catch (error) {
-        console.log("User Controller error:",error) ;
+        console.log("User Controller error:", error);
     }
     return false;
 }
-const register = async(email,name, password) => {
+const loginApp = async (email, password) => {
     try {
-        return await userService.register(email,name,password);
+        return await userService.loginApp(email, password);
     } catch (error) {
-        console.log("User Controller error:",error) ;
+        console.log("User Controller error:", error);
     }
     return false;
 }
- module.exports = {login,register};
+const register = async (email, name, password) => {
+    try {
+        return await userService.register(email, name, password);
+    } catch (error) {
+        console.log("User Controller error:", error);
+    }
+    return false;
+}
+const registerApp = async (email, name, password) => {
+    try {
+        return await userService.registerApp(email, name, password);
+    } catch (error) {
+        console.log("User Controller error:", error);
+    }
+    return false;
+}
+module.exports = { login,loginApp, register,registerApp, getAllUser, deleteUsersByID };

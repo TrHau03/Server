@@ -14,9 +14,9 @@ const deleteProductsByID = async (id) => {
         
     }
 }
-const addProduct = async (name,price,quantity,iamge,category) => {
+const addProduct = async (title,author,content,image,imageContent1,imageContent2,imageContent3,category) => {
     try {
-        return await productService.addProduct(name,price,quantity,iamge,category);
+        return await productService.addProduct(title,author,content,image,imageContent1,imageContent2,imageContent3,category);
     } catch (error) {
         console.log(error);
     }
@@ -28,9 +28,9 @@ const getProductByID = async (id) => {
         console.log(error);
     }
 }
-const updateProductByID = async (id,name,price,quantity,iamge,category) => {
+const updateProductByID = async (id,title,author,content,image,category) => {
     try {
-        return await productService.updateProductByID(id,name,price,quantity,iamge,category);
+        return await productService.updateProductByID(id,title,author,content,image,category);
     } catch (error) {
         console.log(error);
     }

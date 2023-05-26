@@ -19,14 +19,14 @@ const deleteProductsByID = async (id) => {
     return false;
 }
 
-const addProduct = async(name, price,quantity,iamge,category) => {
+const addProduct = async(title, author,content,image,imageContent1,imageContent2,imageContent3,category) => {
   try {
     // const newProduct = {
     //   _id: data.length + 1,
     //   name, price, quantity, iamge, category
     // };
     // data.push(newProduct);
-    const newProduct = new productModel({name, price, quantity, iamge, category});
+    const newProduct = new productModel({title, author, content, image,imageContent1,imageContent2,imageContent3, category});
     await newProduct.save();
     return true;
   } catch (error) {
@@ -46,7 +46,7 @@ const getProductByID = async(id) => {
   }
   return null;
 }
-const updateProductByID = async(id,name,price,quantity,iamge,category) => {
+const updateProductByID = async(id,title,author,content,image,category) => {
   try {
     // const product = data.find(item => item._id.toString() == id.toString());
     const product = await productModel.findById(id);
@@ -61,10 +61,10 @@ const updateProductByID = async(id,name,price,quantity,iamge,category) => {
       //   }
       //   return item;
       // });
-      product.name = name? name : product.name;
-      product.price = price ? price : product.price;
-      product.quantity = quantity ? quantity : product.quantity;
-      product.iamge = iamge ? iamge : product.iamge;
+      product.title = title? title : product.title;
+      product.author = author ? author : product.author;
+      product.content = content ? content : product.content;
+      product.image = image ? image : product.image;
       product.category = category ? category : product.category;
       await product.save();
     return true;
@@ -78,9 +78,7 @@ const updateProductByID = async(id,name,price,quantity,iamge,category) => {
 const searchProduct = async(key) => {
   try {
     let query = {
-      //gt: greater than lt: less than
-      quantity:{$gt: 100, $lt: 1000},
-      name:{$regex: key, $options: 'i'}, 
+      title:{$regex: key, $options: 'i'}, 
     };
     let product = await productModel.find(query);
     return product;

@@ -12,5 +12,5 @@ const userSchema = new Schema({
     now: {type: String},
 });
 
-module.exports = mongoose.models.user || mongoose.model('user', userSchema);
+module.exports = mongoose.models.userApp || mongoose.model('userapp', userSchema);
 // category -----> categories
