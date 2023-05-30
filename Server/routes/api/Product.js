@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
  const productController = require('../../components/product/Controller');
+const  cateController  = require('../../components/category/Controller');
  const upload = require('../../middle/Uploadfile');
  const {checkTokenApp} = require('../../middle/Authen');
 ////localhost:3000/api/product/get-all
@@ -12,7 +13,14 @@ var router = express.Router();
         return res.status(504).json({return : false, product: null});
     }
  });
-
+ router.get('/get-allCategory', async(req, res, next) => {
+    try {
+        const cate = await cateController.getAllCategory();
+        return res.status(200).json({data:{return : true, cate : cate}}); 
+    } catch (error) {
+        return res.status(504).json({return : false, cate: null});
+    }
+ });
  ////localhost:3000/api/product/search?key=iphone
  router.get('/search', async(req, res, next) => {
     try {

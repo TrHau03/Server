@@ -1,9 +1,10 @@
 var express = require("express");
 var router = express.Router();
 const userController = require("../../components/user/Controller");
-
+const { checkTokenWeb } = require("../../middle/Authen");
 router.get('/', async (req, res, next) => {
     try {
+      
         const user = await userController.getAllUser();
         console.log(user);
         return res.render('users/list',{user})
@@ -20,19 +21,21 @@ router.get('/:id/delete', async (req, res, next) => {
         return res.json({ result: false });
     }
 });
-router.post("/", async (req, res, next) => {
-
-    try {
-      const { email, password, name } = req.body;
-        console.log(email);
+router.post('/', [checkTokenWeb], async (req, res, next) => {
+  try {
+    const { email, password, name, passAgain } = req.body;
+    console.log(email, "Email");
+    if (password != passAgain) {
+      res.redirect("/cpanel/user");
+    } else {
       const result = await userController.register(email, password, name);
       if (result) {
-        res.redirect("/login");
-      } else {
-        res.redirect("/register");
+        res.redirect("/cpanel/user");
       }
-    } catch (error) {
-      return res.redirect("/register");
     }
-  });
+
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;

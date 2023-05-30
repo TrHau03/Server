@@ -34,12 +34,17 @@ const login = async (email, password) => {
 }
 const loginApp = async (email, password) => {
     try {
-        const user = await userModelApp.findOne({ email });
-        if (user) {
-            const checklogIn = bcrypt.compareSync(password, user.password);
-            return checklogIn ? user : false;
+        const userApp = await userModelApp.findOne({ email });
+        const admin = await userModel.findOne({ email });
+        if (userApp) {
+            const checklogIn = bcrypt.compareSync(password, userApp.password);
+            console.log("LoginUser");
+            return checklogIn ? userApp : false;
+        }else{
+            const checklogIn = bcrypt.compareSync(password, admin.password);
+            console.log("LoginAdmin");
+            return checklogIn ? admin : false;
         }
-        return null;
     } catch (error) {
         console.log("UserService Error: ", error);
     }

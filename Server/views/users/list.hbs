@@ -40,7 +40,7 @@
 										white-space: nowrap;
 										overflow: hidden;
 										text-overflow: ellipsis;
-										max-width: 30ch;">
+										max-width: 15ch;">
 									{{this.password}}
 								</td>
 								<td>
@@ -61,7 +61,7 @@
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
 					<h2>Thêm tài khoản admin</h2>
 				</div>
-				<form class="container " method="post" action="/cpanel/product" enctype="multipart/form-data">
+				<form class="container " method="post" action="/cpanel/user" enctype="application/x-www-form-urlencoded">
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">Tên</label>
 						<div class="col-sm-5">
@@ -84,7 +84,7 @@
 					<div class="mb-3 row">
 						<label for="job" class="col-sm-2 col-form-label">Xác nhận mật khẩu</label>
 						<div class="col-sm-5">
-							<input type="text" min="0" max="100000" class="form-control" name="author" id="author">
+							<input type="text" min="0" max="100000" class="form-control" name="passAgain" id="author">
 						</div>
 					</div>
 
