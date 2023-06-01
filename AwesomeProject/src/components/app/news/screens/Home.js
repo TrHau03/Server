@@ -50,7 +50,7 @@ const Home = props => {
                 style={homeStyles.icon}
                 source={require('../../../../../src/media/images/Ellipse.png')}
               />
-              <Text style={homeStyles.channel}>Quantity: {quantity}</Text>
+              <Text style={homeStyles.channel}>Quantity: {category.name}</Text>
             </View>
             
           </View>

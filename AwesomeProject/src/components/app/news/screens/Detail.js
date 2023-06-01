@@ -4,7 +4,6 @@ import React,{useContext,useEffect,useState} from "react";
 import { NewsContext } from "../utilities/NewsContext";
 
 const Detail = (props) => {
-  const {navigation} = props;
   const {id} = props?.route?.params;
   const {getDetail} = useContext(NewsContext);
   const [data, setData] = useState(null);

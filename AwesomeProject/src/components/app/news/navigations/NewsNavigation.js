@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Detail from '../screens/Detail';
 import Add from '../screens/Add';
+import Demo from '../screens/Demo';
 
 const Tab = createBottomTabNavigator();
 const NewsNavigation = () => {
@@ -23,13 +24,20 @@ const NewsNavigation = () => {
             }else{
               return <Image source = {require('../../../../media/images/icon_Explore.png')}/>
             }
-          }else if (route.name === 'Add') {
+          }else if (route.name === 'Cate') {
+            if(focused){
+              return <Image style = {homeStyles.plus} source = {require('../../../../media/images/plus.png')}/>
+            }else{
+              return <Image style = {homeStyles.plus} source = {require('../../../../media/images/plus.png')}/>
+            }
+          }else if (route.name === 'Demo') {
             if(focused){
               return <Image style = {homeStyles.plus} source = {require('../../../../media/images/plus.png')}/>
             }else{
               return <Image style = {homeStyles.plus} source = {require('../../../../media/images/plus.png')}/>
             }
           }
+          
 
         },
         tabBarActiveTintColor: '#1877F2',
@@ -41,7 +49,8 @@ const NewsNavigation = () => {
     <Tab.Navigator screenOptions = {({route}) => configTab(route)}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Detail" component={Detail} />
-      <Tab.Screen name="Add" component={Add} />
+      <Tab.Screen name="Cate" component={Add} />
+      <Tab.Screen name="Demo" component={Demo} />
     </Tab.Navigator>
   );
 };

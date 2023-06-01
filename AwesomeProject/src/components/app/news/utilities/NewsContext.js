@@ -27,6 +27,16 @@ export const NewsProvider = (props) =>{
         }
         return null;
     }
+    const getDataByCate = async(id) =>{
+        try {
+            const response = await AxiosInstance().get(`/product/getProductByCate/${id}`);
+            console.log("response:",response.data.product);
+            return response.data.product;
+        } catch (error) { 
+            console.log('get detail Error: ' ,error);
+        }
+        return null;
+    }
     const getCate = async() =>{
         try {
             const response = await AxiosInstance().get('/product/get-allCategory');
@@ -56,7 +66,7 @@ export const NewsProvider = (props) =>{
     }
     return (
         <NewsContext.Provider 
-            value = {{getNews, getDetail,getCate,saveNews}}>
+            value = {{getNews, getDetail,getCate,saveNews,getDataByCate}}>
             {children}
         </NewsContext.Provider>
     )

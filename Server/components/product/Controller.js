@@ -28,6 +28,13 @@ const getProductByID = async (id) => {
         console.log(error);
     }
 }
+const getProductByCate = async (_id) => {
+    try {
+        return await productService.getProductByCate(_id);
+    } catch (error) {
+        console.log(error);
+    }
+}
 const updateProductByID = async (id,title,author,content,image,category) => {
     try {
         return await productService.updateProductByID(id,title,author,content,image,category);
@@ -42,4 +49,4 @@ const searchProduct = async(key) =>{
         console.log(error);
     }
 }
-module.exports = {getALLProducts,deleteProductsByID,addProduct,getProductByID,updateProductByID,searchProduct};
+module.exports = {getALLProducts,deleteProductsByID,addProduct,getProductByID,updateProductByID,searchProduct,getProductByCate};

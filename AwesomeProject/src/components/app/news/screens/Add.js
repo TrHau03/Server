@@ -6,22 +6,18 @@ import {
   TextInput,
   Pressable,
   FlatList,
+  Select,
 } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import { NewsContext } from "../utilities/NewsContext";
 
 const Add = (props) => {
+  const {navigation} = props; 
   const [data, setData] = useState([]);
   const { getCate } = useContext(NewsContext);
   const [refresh, setRefresh] = useState(false);
 
-  const refreshData = async () => {
-    setRefresh(true);
-    const result = await getCate();
-    console.log("+>>>>>>>>>>>>", result);
-    setData(result);
-    setRefresh(false);
-  };
+
   useEffect(() => {
     const getData = async () => {
       const result = await getCate();
@@ -32,30 +28,30 @@ const Add = (props) => {
     return () => {
 
     }
-  },[])
-  const renderItem = ({item}) => {
-    const {_id,name} = item;
+  }, [])
+  const renderItem = ({ item }) => {
+    const { _id, name } = item;
 
     return (
+
       <Pressable
-        //onPress={() => navigation.navigate('Detail', {id: _id})}
+        onPress={() => navigation.navigate('Demo', {id: _id})}
         style={styles.card}
-        >
-       <Text id={{_id}} style={styles.title}>{name}</Text>
+      >
+        <Text id={{ _id }} style={styles.title}>{name}</Text>
       </Pressable>
     );
   };
-
   return (
-    <FlatList
-    removeClippedSubviews = {true}
-    data={data}
-    renderItem={renderItem}
-    keyExtractor={item => item._id}
-    showsVerticalScrollIndicator={false} // ẩn thanh cuộn
-    refreshing = {refresh}
-    onRefresh={refreshData}
-  />
+    <View style={styles.bg}>
+      <FlatList
+        removeClippedSubviews={true}
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item._id}
+        showsVerticalScrollIndicator={false} // ẩn thanh cuộn
+      />
+    </View>
   );
 };
 
@@ -65,17 +61,22 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 16,
+    marginTop: 16,
     padding: 3,
-    borderBottomWidth:1,
+    borderBottomWidth: 1,
     margin: 10,
     borderBottomColor: 'black',
     borderRadius: 5,
-    backgroundColor: '#dddddd'
+    backgroundColor: '#dddddd',
+    width: '100%'
+
   },
-  title:{
-    fontSize:20,
+  title: {
+    fontSize: 25,
     color: 'black'
+  },
+  bg:{
+    alignItems:'center',
+    width: '100%'
   }
 });

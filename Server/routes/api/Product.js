@@ -16,6 +16,7 @@ const  cateController  = require('../../components/category/Controller');
  router.get('/get-allCategory', async(req, res, next) => {
     try {
         const cate = await cateController.getAllCategory();
+        console.log("cate", cate);
         return res.status(200).json({data:{return : true, cate : cate}}); 
     } catch (error) {
         return res.status(504).json({return : false, cate: null});
@@ -41,7 +42,16 @@ const  cateController  = require('../../components/category/Controller');
         return res.status(500).json({return : false, product: null});
     }
  });
-
+ router.get('/getProductByCate/:id', async(req, res, next) => {
+    try {
+        const {id} = req.params;
+        const product = await productController.getProductByCate(id);
+        console.log("Product by Cate", product);
+        return res.status(200).json({data:{return : true, product : product}});
+    } catch (error) {
+        return res.status(500).json({return : false, product: null});
+    }
+ });
  router.post('/upload-image',[upload.single('image')], async(req, res, next) => {
     try {
         let {file} = req;

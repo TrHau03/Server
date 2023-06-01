@@ -1,5 +1,7 @@
 const productModel = require('./Model');
-
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 //getAll Products
 const getALLProducts = async () => {
      try {
@@ -39,6 +41,23 @@ const getProductByID = async(id) => {
     // console.log("ID:", id)
     // const product = data.find(item => item._id.toString() == id.toString());
     const product = await productModel.findById(id).populate('category', 'name');
+    console.log("Product:", product);
+    return product;
+  } catch (error) {
+    console.log("Get Product by id err:" ,error);
+  }
+  return null;
+}
+const getProductByCate = async(_id) => {
+  try {
+    // console.log("ID:", id)
+    // const product = data.find(item => item._id.toString() == id.toString());
+    const productgetall = await productModel.find({}).populate('category', 'name') ;
+    const product = productgetall.filter(item => {
+      if(item.category._id.toString() == _id.toString()){
+        return item;
+      }
+    })
     console.log("Product:", product);
     return product;
   } catch (error) {
@@ -87,5 +106,5 @@ const searchProduct = async(key) => {
   }
   return [];
 }
-module.exports = {getALLProducts,deleteProductsByID,addProduct,getProductByID,updateProductByID,searchProduct};
+module.exports = {getALLProducts,deleteProductsByID,addProduct,getProductByID,updateProductByID,searchProduct,getProductByCate};
 

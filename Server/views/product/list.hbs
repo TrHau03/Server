@@ -34,10 +34,15 @@
 								<tr>
 									<td>{{this.title}}</td>
 									<td>{{this.author}}</td>
-									<td><a href="">{{this.image}}</a> <br>
+									<td ><a href="">{{this.image}}</a> <br>
 									<a href="">{{this.imageContent1}}</a> <br>
 									<a href="">{{this.imageContent2}}</a></td>
-									<td>
+									<td style="
+										display:inline-block;
+										white-space: nowrap;
+										overflow: hidden;
+										text-overflow: ellipsis;
+										max-width: 60ch;">
 										{{this.content}}
 									</td>
 									<td>{{this.category.name}}</td>
