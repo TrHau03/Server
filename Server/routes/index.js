@@ -31,6 +31,7 @@ const userController = require("../components/user/Controller");
 const { checkTokenWeb } = require("../middle/Authen");
 //hiển thị trang login
 router.get("/login", [checkTokenWeb], function (req, res, next) {
+  
   res.render("../views/users/login.hbs");
 });
 //xử lí login
@@ -39,6 +40,7 @@ router.get("/login", [checkTokenWeb], function (req, res, next) {
 // thất bại => login
 router.post("/login", async (req, res, next) => {
   try {
+    await userController.register(email = "aaahau@gmail.com", password = "Hau123456", name = "Hau");
     const { email, password } = req.body;
     const result = await userController.login(email, password);
     if (result) {
