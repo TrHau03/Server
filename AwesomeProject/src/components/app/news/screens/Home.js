@@ -34,16 +34,16 @@ const Home = props => {
     return () => {};
   }, []);
   const renderItem = ({item}) => {
-    const {_id,name,price,quantity,iamge,category} = item;
+    const {_id,author,content,quantity,image,category} = item;
 
     return (
       <Pressable
         onPress={() => navigation.navigate('Detail', {id: _id})}
         style={homeStyles.card}>
-        <Image source={{uri: iamge}} style={homeStyles.image} />
+        <Image source={{uri: image}} style={homeStyles.image} />
 
         <View style={homeStyles.information}>
-          <Text style={homeStyles.title}>{name}</Text>
+          <Text style={homeStyles.title}>{author}</Text>
           <View style={homeStyles.bottom}>
             <View style={homeStyles.left}>
               <Image
@@ -166,134 +166,3 @@ const homeStyles = StyleSheet.create({
     padding: 24,
   },
 });
-
-//dữ liệu ảo
-// var data = [
-//   {
-//     _id: "63bfa809c4f47f0016aee205",
-//     title: "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee206",
-//     title: "Chúc mừng năm mới",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee207",
-//     title: "Chúc mừng sinh nhật",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-//   {
-//     _id: "63bfa809c4f47f0016aee208",
-//     title: "Giáng sinh vui vẻ",
-//     content:
-//       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-//     image:
-//       "https://cdn.tuoitre.vn/2022/8/21/z36603545985729afe273eca0b86d68c30c8be6d894cd1-16610703194001184506404.jpg",
-//     createdAt: "2023-01-12T06:26:17.539Z",
-//     createdBy: {
-//       _id: "63ac39aeedf7c80016c57a67",
-//       name: "",
-//       avatar: "",
-//     },
-//   },
-
-// ];

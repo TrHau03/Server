@@ -6,6 +6,13 @@ const getAllUser = async () => {
         console.log(error);
     }
 }
+const getAllAdmin = async () => {
+    try {
+        return await userService.getAllAdmin();
+    } catch (error) {
+        console.log(error);
+    }
+}
 const deleteUsersByID = async (id) => {
     try {
         return await userService.deleteUsersByID(id)
@@ -45,4 +52,4 @@ const registerApp = async (email, name, password) => {
     }
     return false;
 }
-module.exports = { login,loginApp, register,registerApp, getAllUser, deleteUsersByID };
+module.exports = { login,loginApp, register,registerApp,getAllAdmin, getAllUser, deleteUsersByID };

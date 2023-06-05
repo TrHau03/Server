@@ -10,6 +10,8 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
+import LinearGradient from 'react-native-linear-gradient';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import React, { useContext, useState } from "react";
 import { UserContext } from "../utilities/UserContext";
 
@@ -17,8 +19,8 @@ import { UserContext } from "../utilities/UserContext";
 const Login = (props) => {
   const { navigation } = props;
   const { login } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('huyhoang@gmail.com');
+  const [password, setPassword] = useState('Hau123456');
 
 
   const handleLogin = async () => {
@@ -49,247 +51,136 @@ const Login = (props) => {
     );
   }
   return (
-    <ScrollView>
-      <View style={myStyles.container}>
-        <Text style={myStyles.hello}>Hello</Text>
-        <Text style={myStyles.again}>Again!</Text>
-        <Text style={myStyles.welcome}>Welcome back you've been missed</Text>
-        <View style={myStyles.inputContainer}>
-          <Text style={myStyles.label}>Username*</Text>
-          <TextInput style={myStyles.input}
-            value={email}
-            onChangeText={setEmail}
-          />
+    <KeyboardAwareScrollView>
+      <View style={mystyles.container}>
+        <View style={mystyles.groupWelcome}>
+          <Text style={mystyles.textWelcome}>Welcome</Text>
+          <Text style={mystyles.textSignInToStart}>Log in to start</Text>
         </View>
-
-        <View style={myStyles.inputContainer}>
-          <Text style={myStyles.label}>Password*</Text>
-          <TextInput style={myStyles.input}
-            secureTextEntry
-
-            onChangeText={setPassword}
-          />
-          <Image
-            style={myStyles.eyeIcon}
-            source={require("../../../../../src/media/images/eye.png")}
-          />
-        </View>
-        <View style={myStyles.forgetPassword}>
-          <MyCheckbox />
-          <Text style={myStyles.remember}>Remember me</Text>
-          <Text style={myStyles.forget}>Forgot the password ?</Text>
-        </View>
-        <Pressable style={myStyles.btnContainer} onPress={handleLogin}>
-          <Text style={myStyles.btnLabel}>Login</Text>
-        </Pressable>
-
-        <View style={myStyles.continue}>
-          <Text style={myStyles.continueLabel}>or continue with</Text>
-        </View>
-
-        <View style={myStyles.socialButtonContainer}>
-          <Pressable style={myStyles.btnFBGG}>
-            <Image
-              style={myStyles.fbIcon}
-              source={require("../../../../../src/media/images/facebook.png")}
-            />
-            <Text style={myStyles.btnFBGGLabel}>Facebook</Text>
+        <View style={mystyles.groupLoginWith}>
+          <Pressable>
+            <Image style={mystyles.imageGG} source={require('../../../../media/images/google.png')} />
           </Pressable>
-
-          <Pressable style={myStyles.btnFBGG}>
-            <Image
-              style={myStyles.ggIcon}
-              source={require("../../../../../src/media/images/google.png")}
-            />
-            <Text style={myStyles.btnFBGGLabel}>Google</Text>
+          <Pressable>
+            <Image style={mystyles.imageFB} source={require('../../../../media/images/Meta.png')} />
           </Pressable>
-        </View>
-        <View style={myStyles.account}>
-          <Text style={myStyles.accountLabel}>don’t have an account ? </Text>
-          <Pressable
-            onPress={() => navigation.navigate('Register')}
+          <View style={mystyles.havenotAcc}>
+            <Text style={mystyles.textHavenotAcc}>Haven't account? </Text>
+            <Pressable onPress={() => navigation.navigate('Register')}>
+              <Text style={[mystyles.textHavenotAcc, mystyles.textRegister]}>Register!</Text>
+            </Pressable>
+          </View>
+          <LinearGradient
+            colors={['#A2B2FC', '#FFF1BE']}
+            style={mystyles.linearGradient}
+            start={{ x: 0.4, y: 0.1 }}
+            end={{ x: 0, y: 0 }}
           >
-            <Text style={myStyles.signUpLabel}>Register</Text>
-          </Pressable>
+            <View style={mystyles.groupLogin}>
+              <TextInput style={mystyles.textInputUserName} placeholder='Username' placeholderTextColor="white"  onChangeText={setEmail} >huyhoang@gmail.com</TextInput>
+              <TextInput style={mystyles.textInputPassWord} placeholder='Password' placeholderTextColor="white" onChangeText={setPassword} >Hau123456</TextInput>
+              <Text style={mystyles.textforgotPassword}>Forgot password?</Text>
+              <Pressable style={mystyles.btnContinue} onPress={handleLogin}>
+                <Image source={require('../../../../media/images/Continue.png')} />
+              </Pressable>
+            </View>
+
+
+          </LinearGradient >
+
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 
 export default Login;
 
-const myStyles = StyleSheet.create({
-  forgetPassword: {
-    flexDirection: 'row',
+const mystyles = StyleSheet.create({
+  btnContinue: {
+    position: 'relative',
+    top: 60,
+    left: 30,
+    paddingBottom: 130,
   },
-  forget: {
-    marginTop: 9.5,
-    fontSize: 14,
-    lineHeight: 21,
-    letterSpacing: 0.12,
-    color: '#5890FF',
-    position: 'absolute',
-    right: 0,
+  textforgotPassword: {
+    position: 'relative',
+    left: '65%',
+    top: 10,
+    color: 'white'
   },
-  remember: {
-    marginTop: 9.5,
-    marginLeft: 6,
-    fontSize: 14,
-    lineHeight: 21,
-    letterSpacing: 0.12,
-    color: '#4E4B66',
+  textInputPassWord: {
+    borderBottomWidth: 1,
+    borderColor: "white",
+    fontSize: 16,
+    color: "white",
+    marginTop: 20,
   },
-  checkbox: {
-    width: 16,
-    height: 16,
+  textInputUserName: {
+    borderBottomWidth: 1,
+    borderColor: "white",
+    fontSize: 16,
+    color: "white",
   },
-  checkboxBase: {
+  linearGradient: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    height: '100%',
+    width: '100%',
+    marginTop: 20,
+  },
+  groupLogin: {
+    width: '100%',
+    height: '100%',
+    paddingRight: 30,
+    paddingLeft: 30,
+    paddingTop: 30,
+  },
+  textRegister: {
+    color: "#2079FF",
+  },
+  textHavenotAcc: {
+    fontSize: 16,
+    lineHeight: 18,
+    color: "#424242",
+
+  },
+  havenotAcc: {
     marginTop: 10,
-    width: 20,
-    height: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#4E4B66',
-    backgroundColor: 'transparent',
-  },
-  checkboxChecked: {
-    backgroundColor: '#1877F2',
-  },
-  signUpLabel: {
-    fontWeight: '400',
-    fontSize: 14,
-    lineHeight: 21,
-    color: '#1877f2'
-  },
-  accountLabel: {
-    fontWeight: '400',
-    fontSize: 14,
-    lineHeight: 21,
-    color: '#667080'
-  },
-  account: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 16
-  },
-  btnFBGGLabel: {
-    fontWeight: '600',
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#667080',
-    letterSpacing: 0.12,
-    marginLeft: 10
-  },
-  btnFBGG: {
     flexDirection: "row",
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    height: 48,
-    width: '47%',
-    backgroundColor: '#EEF1F4',
-    borderRadius: 6,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  socialButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 16,
-  },
-
-  continueLabel: {
-    fontWeight: "400",
-    fontSize: 14,
-    lineHeight: 21,
-    letterSpacing: 0.12,
-    color: "#4E4B66",
-  },
-
-  continue: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 16,
-  },
-
-  eyeIcon: {
-    position: "absolute",
-    top: 37,
-    right: 10,
-  },
-
-  inputContainer: {
-    marginBottom: 16,
-    position: "relative",
-  },
-
-  btnLabel: {
-    fontWeight: "600",
-    fontSize: 16,
-    lineHeight: 24,
-    letterSpacing: 0.12,
-    color: "#fff",
-  },
-
-  btnContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 16,
-    paddingVertical: 13,
-    paddingHorizontal: 24,
-    height: 50,
-    width: "100%",
-    backgroundColor: "#1877f2",
-    borderRadius: 6,
-  },
-
-  input: {
-    width: "100%",
     padding: 10,
-    height: 48,
-    backgroundColor: "#fff",
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: "#4e4b66",
   },
-  label: {
+  imageFB: {
+    marginTop: 20,
+
+  },
+  groupLoginWith: {
+    alignItems: "center",
+    marginTop: 50,
+
+  },
+  textSignInToStart: {
+    fontFamily: "Unbuntu",
+    fontStyle: "normal",
     fontWeight: "400",
-    fontSize: 14,
-    lineHeight: 21,
-    letterSpacing: 0.12,
-    color: "#4e4b66",
-    marginBottom: 4,
+    lineHeight: 18,
+    fontSize: 16,
+    color: "#9D9D9D",
+  },
+  textWelcome: {
+    fontFamily: "Unbuntu",
+    fontStyle: "normal",
+    fontWeight: "500",
+    lineHeight: 41,
+    fontSize: 36,
+    color: "#424242",
+  },
+  groupWelcome: {
+    alignItems: "center",
+    marginTop: 100,
   },
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 24,
-  },
-  hello: {
-    fontWeight: "700",
-    fontSize: 48,
-    lineHeight: 72,
-    letterSpacing: 0.12,
-    color: "#1877f2",
-  },
-  again: {
-    fontWeight: "700",
-    fontSize: 48,
-    lineHeight: 72,
-    letterSpacing: 0.12,
-    color: "#050505",
-  },
-  welcome: {
-    width: 222,
-    fontWeight: "400",
-    fontSize: 20,
-    lineHeight: 30,
-    letterSpacing: 0.12,
-    color: "4e4b66",
-    marginBottom: 48,
-  },
-});
+    backgroundColor: `linear-gradient(yellow,lightgreen)`,
+  }
+})

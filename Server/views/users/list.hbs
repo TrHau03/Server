@@ -15,53 +15,98 @@
 	<div class="container-fluid">
 		<div class="row align-items-start mt-5">
 			<div class="col">
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
-					<h2>Quản lí user</h2>
-				</div>
-				<div class="table-responsive">
-					<table class="table">
-						{{#each user}}
-						<thead class="table-dark">
-							<tr>
-								<th>Tên </th>
-								<th>Email</th>
-								<th>Mật khẩu</th>
-								<th>Ngày đăng kí</th>
-								<th>Cập nhật</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>{{this.name}}</td>
-								<td>{{this.email}}</td>
-								<td style="
+				<div class="row">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
+						<h2>List Admin</h2>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							{{#each admin}}
+							<thead class="table-dark">
+								<tr>
+									<th>Tên </th>
+									<th>Email</th>
+									<th>Mật khẩu</th>
+									<th>Ngày đăng kí</th>
+									<th>Cập nhật</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{{this.name}}</td>
+									<td>{{this.email}}</td>
+									<td style="
 										display:inline-block;
 										white-space: nowrap;
 										overflow: hidden;
 										text-overflow: ellipsis;
 										max-width: 15ch;">
-									{{this.password}}
-								</td>
-								<td>
-									{{this.now}}
-								</td>
-								<td>
-									<a href="/cpanel/product/{{this._id}}/edit">Edit</a> &nbsp;
-									<a onclick="confirmDelete('{{this._id}}')">Delete</a>
-								</td>
-							</tr>
-						</tbody>
-						{{/each}}
-					</table>
+										{{this.password}}
+									</td>
+									<td>
+										{{this.now}}
+									</td>
+									<td>
+										&nbsp;
+										<a href="" onclick="confirmDelete('{{this._id}}')">Delete</a>
+									</td>
+								</tr>
+							</tbody>
+							{{/each}}
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
+						<h2>List User</h2>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							{{#each user}}
+							<thead class="table-dark">
+								<tr>
+									<th>Tên </th>
+									<th>Email</th>
+									<th>Mật khẩu</th>
+									<th>Ngày đăng kí</th>
+									<th>Cập nhật</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{{this.name}}</td>
+									<td>{{this.email}}</td>
+									<td style="
+										display:inline-block;
+										white-space: nowrap;
+										overflow: hidden;
+										text-overflow: ellipsis;
+										max-width: 15ch;">
+										{{this.password}}
+									</td>
+									<td>
+										{{this.now}}
+									</td>
+									<td>
+										&nbsp;
+										<a href="" onclick="confirmDelete('{{this._id}}')">Delete</a>
+									</td>
+								</tr>
+							</tbody>
+							{{/each}}
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="col justify-content-md-center">
+			<div class="col justify-content-md-center" style="margin-left: 20px;">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 mb-4 border-bottom">
-					<h2>Thêm tài khoản admin</h2>
+					<h2>Add account admin</h2>
 				</div>
-				<form class="container " method="post" action="/cpanel/user" enctype="application/x-www-form-urlencoded">
+				<form class="container " method="post" action="/cpanel/user"
+					enctype="application/x-www-form-urlencoded">
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">Tên</label>
 						<div class="col-sm-5">
@@ -90,8 +135,8 @@
 
 
 					<div class="d-grid gap-2 d-md-flex justify-content-end mb-3 position-relative end-60">
-						<button type="submit" class="btn btn-primary">Thêm tài khoản</button>
-						<button type="button" class="btn btn-secondary">Reset</button>
+						<button type="submit" class="btn btn-primary" style="margin-right: 100px;">Thêm tài
+							khoản</button>
 					</div>
 				</form>
 			</div>

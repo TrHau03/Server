@@ -35,7 +35,7 @@ const Add = (props) => {
     return (
 
       <Pressable
-        onPress={() => navigation.navigate('Demo', {id: _id})}
+        onPress={() => navigation.navigate('DetailCate', {id: _id})}
         style={styles.card}
       >
         <Text id={{ _id }} style={styles.title}>{name}</Text>

@@ -2,8 +2,9 @@ import { StyleSheet, Text, View, FlatList,Pressable,Image } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import { NewsContext } from '../utilities/NewsContext';
 
-const Demo = (props) => {
+const DetailCate = (props) => {
     const { id } = props?.route?.params;
+  const {navigation} = props; 
     console.log(id);
     const { getDataByCate } = useContext(NewsContext);
     const [data, setData] = useState(null);
@@ -52,7 +53,7 @@ const Demo = (props) => {
     )
 }
 
-export default Demo
+export default DetailCate
 
 const homeStyles = StyleSheet.create({
     textTrending: {

@@ -3,9 +3,16 @@
 const userModel = require('./Model');
 const userModelApp = require('./ModelApp');
 const bcrypt = require('bcryptjs');
-const getAllUser = async () => {
+const getAllAdmin = async () => {
     try {
         return await userModel.find();
+    } catch (error) {
+        console.log("GetAllUserErr", error);
+    }
+}
+const getAllUser = async () => {
+    try {
+        return await userModelApp.find();
     } catch (error) {
         console.log("GetAllUserErr", error);
     }
@@ -110,4 +117,4 @@ const registerApp = async (email, name, password) => {
     }
     return false;
 }
-module.exports = { login,loginApp, register,registerApp, getAllUser, deleteUsersByID };
+module.exports = { login,loginApp, register,registerApp,getAllAdmin, getAllUser, deleteUsersByID };

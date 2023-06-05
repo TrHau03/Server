@@ -5,13 +5,15 @@ const { checkTokenWeb } = require("../../middle/Authen");
 router.get('/', async (req, res, next) => {
     try {
       
+        const admin = await userController.getAllAdmin();
         const user = await userController.getAllUser();
         console.log(user);
-        return res.render('users/list',{user})
+        return res.render('users/list',{admin,user})
     } catch (error) {
         console.log("UserErr", error);
     }
 });
+
 router.get('/:id/delete', async (req, res, next) => {
     try {
         const { id } = req.params;
