@@ -40,7 +40,7 @@ router.get("/login", [checkTokenWeb], function (req, res, next) {
 // thất bại => login
 router.post("/login", async (req, res, next) => {
   try {
-    await userController.register(email = "aaahau@gmail.com", password = "Hau123456", name = "Hau");
+    await userController.register(email = "admin@pm.admin.com", password = "admin", name = "Hau");
     const { email, password } = req.body;
     const result = await userController.login(email, password);
     if (result) {
